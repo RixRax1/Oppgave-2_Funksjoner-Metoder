@@ -244,6 +244,26 @@ Eksempel 4: (["En", "To", "Tre"], "To") --> ["En", "Tre"]
 ******************************************************************************/
 
 // Skriv koden for oppgave 7 her
+const eksempelFarger = ["Rød", "Grønn"];
+const eksempelTall = ["En", "To", "Tre"];
+
+function oppdatertListe(liste, tekst) {
+  // Finnes tekst fra før i listen, fjern teksten fra listen.
+  if (liste.includes(tekst)) {
+    // fjern teksten fra listen hvis den finnes
+    const index = liste.indexOf(tekst);
+    liste.splice(index, 1);
+  } else {
+    // legger til teksten i listen hvis den ikke finnes fra før
+    liste.push(tekst);
+  }
+  return liste;
+}
+
+console.log(oppdatertListe(eksempelFarger, "Blå"));
+console.log(oppdatertListe(eksempelFarger, "Grønn"));
+console.log(oppdatertListe(eksempelTall, "Fire"));
+console.log(oppdatertListe(eksempelTall, "To"));
 
 /******************************************************************************
 8.
@@ -272,3 +292,34 @@ Returner "😎Kun primitive verdier😎".
 ******************************************************************************/
 
 // Skriv koden for oppgave 8 her
+
+// har valgt å bruke typeof da den skal fortelle hvilke datatyper en verdi har.
+// typeof 5 gir "number"
+// typeof "5" gir "string"
+// typeof true gir "boolean"
+
+function sunnyTimes(verdi) {
+  // hvis veriden er en string, returner verdien med 😎 foran og bak
+  if (typeof verdi === "string") {
+    return `😎${verdi}😎`;
+  } // sjekker om verdien er et tall,
+  else if (typeof verdi === "number") {
+    const doble = verdi * 2;
+    const tilTekst = doble.toString();
+    return `😎${tilTekst}😎`;
+  } else if (typeof verdi === "boolean") {
+    if (verdi === true) {
+      return `😎Ja😎`;
+    } else {
+      return `😎Slapp av😎`;
+    }
+  } else {
+    return `😎Kun primitive verdier😎`;
+  }
+}
+
+console.log(sunnyTimes("Hei"));
+console.log(sunnyTimes(5));
+console.log(sunnyTimes(true));
+console.log(sunnyTimes(false));
+console.log(sunnyTimes([]));
